@@ -1,0 +1,80 @@
+DROP TABLE IF EXISTS formacao;
+
+CREATE TABLE formacao( 
+  `nome` varchar(60) DEFAULT NULL,
+  `SEQORDNIVEL` int(15) DEFAULT NULL,
+  `codnivel` varchar(60) DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS ies;
+
+CREATE TABLE ies (
+  `IDIES` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(100) DEFAULT '0',
+  `SIGLA` varchar(30) DEFAULT '0',
+  PRIMARY KEY (`IDIES`),
+  UNIQUE KEY `IDIES` (`IDIES`,`NOME`,`SIGLA`),
+  KEY `IDIES_2` (`IDIES`,`NOME`,`SIGLA`)
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS pesquisador;
+
+CREATE TABLE pesquisador(
+  `IDPESQUISADOR` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `KEYIES` int(10) unsigned DEFAULT '0',
+  `NOME` varchar(100) DEFAULT '0',
+  `KEYUNIDADE` int(10) unsigned NOT NULL DEFAULT '0',
+  `AREA` varchar(100),
+  `SUBAREA` varchar(100),
+  PRIMARY KEY (`IDPESQUISADOR`),
+  UNIQUE KEY `IDPESQUISADOR` (`IDPESQUISADOR`),
+  KEY `IDPESQUISADOR_2` (`IDPESQUISADOR`)
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS pesquisadorformacao;
+
+CREATE TABLE pesquisadorformacao(
+  `quantidade` int(15) DEFAULT NULL,
+  `keypesquisador` int(10) DEFAULT NULL,
+  `keyformacao` char(10) DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS producao;
+
+CREATE TABLE producao(
+  `IDPRODUCAO` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `KEYPESQUISADOR` int(10) unsigned DEFAULT '0',
+  `KEYTIPOPRODUCAO` int(10) unsigned DEFAULT '0',
+  `ANO` int(4) unsigned DEFAULT '0',
+  `VALOR` int(10) unsigned DEFAULT '0',
+  `IDIOMA` varchar(16) DEFAULT NULL,
+  `PAIS` VARCHAR (16) DEFAULT NULL,
+  `DATE` date DEFAULT NULL,
+  `HASH` varchar(100) ,
+  `DUVIDA` int(10) ,
+  `NOME` varchar(500) ,
+  PRIMARY KEY (`IDPRODUCAO`),
+  UNIQUE KEY `IDPRODUCAO` (`IDPRODUCAO`),
+  KEY `IDPRODUCAO_2` (`IDPRODUCAO`)
+) AUTO_INCREMENT=1;
+
+DROP TABLE IF EXISTS tipoproducao;
+
+CREATE TABLE tipoproducao(
+  `IDTIPOPRODUCAO` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(120) DEFAULT '0',
+  `ABREVIACAO` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`IDTIPOPRODUCAO`),
+  UNIQUE KEY `IDTIPOPRODUCAO` (`IDTIPOPRODUCAO`,`NOME`),
+  KEY `IDTIPOPRODUCAO_2` (`IDTIPOPRODUCAO`,`NOME`)
+) AUTO_INCREMENT=25 ;
+
+DROP TABLE IF EXISTS unidadeacademica;
+
+CREATE TABLE unidadeacademica(
+  `idunidade` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) NOT NULL DEFAULT '',
+  `tipo` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`idunidade`)
+);
+

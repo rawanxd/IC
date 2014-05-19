@@ -1,0 +1,4 @@
+Pfile = Arquivo
+Poption = Opções
+Pabout = Sobre
+Planguage = Linguagem
